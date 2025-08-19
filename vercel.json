@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "frontend/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
+    { "src": "api/detect-cms.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/detect", "dest": "/api/detect-cms.js" },
+    { "src": "/(.*)", "dest": "/frontend/dist/$1" }
+  ]
+}
